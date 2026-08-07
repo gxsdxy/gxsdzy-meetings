@@ -1,7 +1,7 @@
 [book]
-title = "广西水利电力职业技术学院 - 会议纪要"
+title = "gxsdxy 会议纪要"
 authors = ["豆包 AI 助手"]
-description = "广西水利电力职业技术学院工作会议纪要文档库"
+description = "gxsdxy 工作会议纪要文档库"
 language = "zh-CN"
 multilingual = false
 src = "src"

@@ -1,6 +1,6 @@
 # gxsdzy-meetings
 
-广西水利电力职业技术学院工作会议纪要仓库。mdBook 构建，GitHub Actions 自动部署到 Cloudflare Pages。
+gxsdxy 工作会议纪要仓库。mdBook 构建，GitHub Actions 自动部署到 Cloudflare Pages。
 
 **在线浏览**：https://gxsdzy-meetings.pages.dev/
 
