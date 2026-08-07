@@ -1,0 +1,33 @@
+# 临时管理用：本机网络无法访问 Cloudflare API，借 Actions runner 执行
+# 用完即删
+name: CF Pages admin (temp)
+
+on:
+  workflow_dispatch:
+    inputs:
+      delete:
+        description: '要删除的 Pages 项目名（留空则只 list）'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  admin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Pages projects
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project list
+
+      - name: Delete project
+        if: ${{ inputs.delete != '' }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project delete ${{ inputs.delete }} --yes
