@@ -27,7 +27,7 @@
 |--------|-----|
 | **Production branch** | `main` |
 | **Framework preset** | `None` |
-| **Build command** | `cargo install mdbook && mdbook build` |
+| **Build command** | `bash build.sh` |
 | **Build output directory** | `book` |
 | **Root directory** | `/` (留空) |
 
