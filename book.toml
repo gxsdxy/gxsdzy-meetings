@@ -1,0 +1,35 @@
+[book]
+title = "广西水利电力职业技术学院 - 会议纪要"
+authors = ["豆包 AI 助手"]
+description = "广西水利电力职业技术学院工作会议纪要文档库"
+language = "zh-CN"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/gxsdxy/gxsdxy-meetings"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/gxsdxy/gxsdxy-meetings/edit/main/{path}"
+site-url = "/"
+no-section-label = false
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3

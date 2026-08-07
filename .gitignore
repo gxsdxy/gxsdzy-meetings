@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+*.DS_Store
+
+# mdBook build output (Cloudflare Pages will build)
+/book/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
