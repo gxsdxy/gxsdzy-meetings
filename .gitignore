@@ -2,7 +2,7 @@
 .DS_Store
 *.DS_Store
 
-# mdBook build output (Cloudflare Pages will build)
+# mdBook build output (GitHub Actions will build)
 /book/
 
 # IDE

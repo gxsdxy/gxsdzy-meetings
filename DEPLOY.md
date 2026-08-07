@@ -1,66 +1,51 @@
 # Cloudflare Pages 部署指南
 
-本项目使用 mdBook 构建静态站点，通过 Cloudflare Pages 自动部署。
+本项目通过 **GitHub Actions** 自动构建 mdBook 并以 Direct Upload 方式部署到 Cloudflare Pages：
 
-## 部署步骤
+- 无需在 Cloudflare Dashboard 里连接 Git 仓库、配置构建命令
+- 推送到 `main` 分支即自动部署，也可在 Actions 页手动触发
+- 工作流文件：`.github/workflows/deploy.yml`
 
-### 1. 登录 Cloudflare Dashboard
+## 一次性配置
 
-访问 https://dash.cloudflare.com/ 并登录你的账号。
+### 1. 获取 Cloudflare API Token
 
-### 2. 创建 Pages 项目
+1. 访问 https://dash.cloudflare.com/profile/api-tokens
+2. 点击 **Create Token**，可使用 "Edit Cloudflare Workers" 模板，或自定义权限：**Account → Cloudflare Pages → Edit**
+3. 保存生成的 Token
 
-1. 左侧导航选择 **Workers & Pages**
-2. 点击 **Create application**
-3. 选择 **Pages** 标签
-4. 点击 **Connect to Git**
+### 2. 获取 Account ID
 
-### 3. 连接 GitHub 仓库
+登录 Cloudflare Dashboard，在 **Workers & Pages** 概览页右侧栏即可看到 **Account ID**。
 
-1. 授权 Cloudflare 访问你的 GitHub 账号
-2. 选择仓库 `gxsdxy/gxsdzy-meetings`
-3. 点击 **Begin setup**
+### 3. 配置 GitHub Secrets
 
-### 4. 构建设置
+在仓库 **Settings → Secrets and variables → Actions** 中添加：
 
-| 设置项 | 值 |
+| Secret | 值 |
 |--------|-----|
-| **Production branch** | `main` |
-| **Framework preset** | `None` |
-| **Build command** | `bash build.sh` |
-| **Build output directory** | `book` |
-| **Root directory** | `/` (留空) |
+| `CLOUDFLARE_API_TOKEN` | 第 1 步的 Token |
+| `CLOUDFLARE_ACCOUNT_ID` | 第 2 步的 Account ID |
 
-### 5. 环境变量（可选）
+### 4. 触发部署
 
-无需额外环境变量。
+向 `main` 推送任意提交即可。首次部署会自动创建名为 `gxsdzy-meetings` 的 Pages 项目（如需改名，修改 workflow 中的 `--project-name`）。
 
-### 6. 点击 Save and Deploy
-
-等待首次构建完成，通常需要 2-3 分钟（因为需要安装 Rust 和 mdBook）。
+> 注意：本项目走 Direct Upload，**不要**再在 Cloudflare Dashboard 给该项目连接 Git 仓库设置构建命令，否则会双重部署。
 
 ## 自定义域名（可选）
 
-部署完成后，你可以在 Pages 项目设置中：
+部署完成后，在 Pages 项目设置中：
+
 1. 进入 **Custom domains**
 2. 点击 **Set up a custom domain**
-3. 输入你的域名，例如 `meetings.gxsdxy.edu.cn`
+3. 输入域名，例如 `meetings.gxsdzy.edu.cn`
 4. 按照提示配置 DNS 记录
-
-## 自动部署
-
-配置完成后，每次向 `main` 分支推送代码，Cloudflare Pages 会自动：
-1. 拉取最新代码
-2. 运行 `mdbook build`
-3. 将 `book/` 目录部署到全球 CDN
 
 ## 本地预览
 
 ```bash
-# 安装 mdBook（如果未安装）
-cargo install mdbook
-
-# 本地构建并预览
+# 安装 mdBook（如果未安装）：cargo install mdbook
 mdbook serve --open
 ```
 

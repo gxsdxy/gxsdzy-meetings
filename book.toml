@@ -13,11 +13,12 @@ create-missing = false
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-git-repository-url = "https://github.com/gxsdxy/gxsdxy-meetings"
+git-repository-url = "https://github.com/gxsdxy/gxsdzy-meetings"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/gxsdxy/gxsdxy-meetings/edit/main/{path}"
+edit-url-template = "https://github.com/gxsdxy/gxsdzy-meetings/edit/main/{path}"
 site-url = "/"
-no-section-label = false
+no-section-label = true
+additional-css = ["theme/custom.css"]
 
 [output.html.fold]
 enable = true
