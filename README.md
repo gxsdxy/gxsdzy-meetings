@@ -36,4 +36,4 @@ mdbook serve --open
 
 ---
 
-*会议纪要由豆包 AI 助手（Seed 2.1 Pro）整理生成；站点结构修复与部署流水线由 Kimi K3 完成，特此感谢。*
+*会议纪要由豆包 AI 助手（Seed 2.1 Pro）整理生成；站点结构修复与部署流水线由 Kimi K3 完成；2026 年 9 月批次纪要由 Cursor（Claude Fable 5）整理入库，特此感谢。*
